@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.joshuac.mdevproject"
+    package="com.joshuac.campusconnect"
     android:versionCode="1"
     android:versionName="1.0" >
 	<permission android:name="com.joshuac.mdevproject.permission.C2D_MESSAGE" android:protectionLevel="signature" />
@@ -25,7 +25,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.joshuac.mdevproject.MainActivity"
+            android:name="com.joshuac.campusconnect.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,6 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
     
 		<receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
   			<intent-filter>
@@ -43,4 +44,14 @@
 		</receiver>
 		<service android:name=".GCMIntentService" />
 	</application>
+=======
+        
+        <activity
+            android:name="com.joshuac.campusconnect.StudentActivity"
+ 			>
+        </activity>
+        
+    </application>
+
+>>>>>>> 8a5e87b8a9ac45243ed483fb366dc04d2930678d
 </manifest>
