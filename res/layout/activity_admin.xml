@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminActivity" >
+    
+    <Button
+        android:id="@+id/upcomingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:text="View Upcoming Events"
+        android:textAlignment="center" />
+    
+     <Button
+        android:id="@+id/currentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/upcomingButton"
+        android:layout_below="@+id/upcomingButton"
+        android:layout_marginTop="36dp"
+        android:text="Current Events in Area" />
+
+     <Button
+         android:id="@+id/addButton"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:layout_below="@+id/currentButton"
+        android:layout_marginTop="36dp"
+         android:text="Add Event" />
+
+</RelativeLayout>

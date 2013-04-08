@@ -1,0 +1,143 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".AddEventActivity" >
+
+    <TextView
+        android:id="@+id/eventText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event:"
+        android:textSize="20dp"
+        android:layout_marginTop="40dp" 
+        android:layout_marginLeft="20dp" />
+
+    <EditText
+        android:id="@+id/eventTextBox"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/eventText"
+        android:inputType="text"
+        android:textSize="20dp" 
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:hint = "i.e., Movie Night"/>
+    
+     <TextView
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventText"
+        android:text="Date:"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp" 
+        android:layout_marginLeft="20dp" />
+     
+      <TextView
+        android:id="@+id/curdateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventText"
+        android:layout_toRightOf="@+id/dateText"
+        android:text="01/01/2013"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp" 
+        android:layout_marginLeft="20dp" />
+      
+      <TextView
+        android:id="@+id/weekDayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/curdateText"
+        android:layout_toRightOf="@+id/dateText"
+        android:text="Sunday"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp" 
+        android:layout_marginLeft="20dp" />
+     
+     <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateText"
+        android:text="Time:"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp" 
+        android:layout_marginLeft="20dp" />
+     
+     <TextView
+        android:id="@+id/curtimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/timeText"
+        android:layout_below="@+id/dateText"
+        android:textSize="20dp"
+        android:text="12:00 PM"
+        android:layout_marginTop="50dp" 
+        android:layout_marginLeft="20dp" />
+     
+     <TextView
+        android:id="@+id/whereText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeText"
+        android:text="Where:"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp" 
+        android:layout_marginLeft="20dp" />
+     
+     <EditText
+         android:id="@+id/whereTextBox"
+         android:layout_width="200dp"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:hint="i.e., Reitz Union"
+         android:layout_below="@+id/timeText"
+         android:layout_toRightOf="@+id/whereText"
+         android:layout_marginTop="50dp" 
+         android:inputType="text"
+         android:textSize="20sp" />
+     
+     <Button
+         android:id="@+id/locationButton"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="35dp"
+         android:layout_below="@+id/whereText"
+         android:layout_toRightOf="@+id/whereText"
+         android:text="Map Location" />
+     
+      <Button
+         android:id="@+id/submitButton"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="25dp"
+         android:layout_below="@+id/locationButton"
+         android:layout_toRightOf="@+id/whereText"
+         android:text="Submit Event" />
+
+      <Button
+          android:id="@+id/curtimeButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignBaseline="@+id/curtimeText"
+          android:layout_alignBottom="@+id/curtimeText"
+          android:layout_toRightOf="@+id/submitButton"
+          android:text="Change"
+          android:textSize="20dp" />
+      
+       <Button
+          android:id="@+id/curdateButton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignBaseline="@+id/curdateText"
+          android:layout_alignBottom="@+id/curdateText"
+          android:layout_toRightOf="@+id/submitButton"
+          android:text="Change"
+          android:textSize="20dp" />
+       
+
+</RelativeLayout>
