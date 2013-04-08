@@ -25,35 +25,38 @@ public class StudentActivity extends Activity
 	}//end onCreate
 	
 	
-	
 	//called when "view upcoming events" button is pressed
 	public void viewUpcomingEvents(View v)
 	{
 		System.out.println("up");
-	}
+	}//end viewUpcomingEvents
+	
 	
 	//called when "current events in area" button is pressed
 	public void viewEventsInArea(View v)
 	{
 		System.out.println("area");
-	}
+	}//end viewEventsinArea
+	
 	
 	//called when "checkin" button is pressed
 	public void checkinToEvent(View v)
 	{
 		System.out.println("in");
-	}
+	}//end checkintoEvent
+	
 	
 	//called when "friends" button is pressed
 	public void viewFriendActivity(View v)
 	{
 		System.out.println("friend");
-	}
+	}//end viewFriendActivity
+	
 	
 	//called when "setting" button is pressed
 	public void viewSettings(View v)
 	{
 		System.out.println("settings");
-	}
+	}//end viewSettings
 	
 }//end StudentActivity

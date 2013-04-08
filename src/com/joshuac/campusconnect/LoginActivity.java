@@ -32,13 +32,15 @@ public class LoginActivity extends Activity
 		EditText usernameText = (EditText) findViewById(R.id.usernameText);
 		EditText passwordText = (EditText) findViewById(R.id.passwordText);
 		
+		String username = usernameText.getText().toString();
+		
 		Intent intent;
 		//set up intent - just used for testing
-		if(usernameText.equals("admin"))
+		if(username.equals("admin"))
 		{
 			intent = new Intent(getBaseContext(), AdminActivity.class);
 		}
-		else if(usernameText.equals("student"))
+		else if(username.equals("student"))
 		{
 			intent = new Intent(getBaseContext(), StudentActivity.class);
 		}
@@ -46,8 +48,8 @@ public class LoginActivity extends Activity
 			intent = new Intent(getBaseContext(), MapActivity.class);
 		
 		//put data into intent
-		intent.putExtra("username", usernameText.getText().toString());
+		intent.putExtra("username", username);
 		startActivity(intent);
-	}
+	}//end login
 
 }//end LoginActivity
