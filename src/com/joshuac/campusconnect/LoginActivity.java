@@ -33,7 +33,8 @@ public class LoginActivity extends Activity
 		EditText passwordText = (EditText) findViewById(R.id.passwordText);
 		
 		//set up intent
-		Intent intent = new Intent(getBaseContext(), AdminActivity.class);
+		//Intent intent = new Intent(getBaseContext(), AdminActivity.class);
+		Intent intent = new Intent(getBaseContext(), MapActivity.class);
 		intent.putExtra("username", usernameText.getText().toString());
 		startActivity(intent);
 	}

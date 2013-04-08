@@ -138,6 +138,5 @@
           android:layout_toRightOf="@+id/submitButton"
           android:text="Change"
           android:textSize="20dp" />
-       
 
 </RelativeLayout>
