@@ -8,5 +8,6 @@
     <string name="title_activity_admin">AdminActivity</string>
     <string name="title_activity_add_event">AddEventActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_map_fragment">MapFragment</string>
 
 </resources>
