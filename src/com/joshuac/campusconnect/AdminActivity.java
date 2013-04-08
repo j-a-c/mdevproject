@@ -43,7 +43,7 @@ public class AdminActivity extends Activity {
 		          // it was the second button
 		      }
 		  }
-		};
+	};
 
 
 }
