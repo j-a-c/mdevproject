@@ -10,6 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="56dp"
+        android:onClick="viewUpcomingEvents"
         android:text="View Upcoming Events"
         android:textAlignment="center" />
 
@@ -20,6 +21,7 @@
         android:layout_alignLeft="@+id/bcheckinButton"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="39dp"
+        android:onClick="viewSettings"
         android:text="Settings" />
 
     <Button
@@ -29,25 +31,27 @@
         android:layout_above="@+id/settingsButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp"
+        android:onClick="viewFriendActivity"
         android:text="Friends" />
+
+    <Button
+        android:id="@+id/currentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bcheckinButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:onClick="viewEventsInArea"
+        android:text="Current Events in Area" />
 
     <Button
         android:id="@+id/bcheckinButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/friendsButton"
-        android:layout_alignLeft="@+id/friendsButton"
-        android:layout_marginBottom="43dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:onClick="checkinToEvent"
         android:text="Checkin" />
-
-    <Button
-        android:id="@+id/currentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/upcomingButton"
-        android:layout_below="@+id/upcomingButton"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="36dp"
-        android:text="Current Events in Area" />
 
 </RelativeLayout>
