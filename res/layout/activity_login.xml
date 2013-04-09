@@ -31,7 +31,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="74dp"
         android:ems="10"
-        android:hint="Username" />
+        android:hint="Username"
+        android:lines="1"
+        android:maxLines="1" />
 
     <Button
         android:id="@+id/loginButton"

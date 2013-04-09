@@ -87,7 +87,8 @@ public class AddEventActivity extends Activity {
 		      }
 		      else if( locationButton.getId() == ((Button)v).getId() ){
 		          // it was the second button
-		    	  Intent intent = new Intent(getBaseContext(), MapFragment.class);
+		    	  Intent intent = new Intent(getBaseContext(), MapActivity.class);
+		    	  intent.putExtra("admin", true);
 		          startActivity(intent);
 		      }
 		      else if( submitButton.getId() == ((Button)v).getId() ){
