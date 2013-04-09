@@ -37,7 +37,10 @@ public class AdminActivity extends Activity {
 		          startActivity(intent);
 		      }
 		      else if( upcomingButton.getId() == ((Button)v).getId() ){
-		          // it was the second button
+		    	  //set admin to false to prevent touch events
+		    	  Intent intent = new Intent(getBaseContext(), MapActivity.class);
+		    	  intent.putExtra("admin", false);
+		    	  startActivity(intent);
 		      }
 		      else if( currentButton.getId() == ((Button)v).getId() ){
 		          // it was the second button

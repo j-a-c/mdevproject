@@ -19,8 +19,6 @@ public class StudentActivity extends Activity
 		Intent loginInfo = getIntent();
 		if (loginInfo != null)
 			username = (String) loginInfo.getSerializableExtra("username");
-		System.out.println(username);
-
 		
 	}//end onCreate
 	
@@ -35,7 +33,9 @@ public class StudentActivity extends Activity
 	//called when "current events in area" button is pressed
 	public void viewEventsInArea(View v)
 	{
-		System.out.println("area");
+  	  	Intent intent = new Intent(getBaseContext(), MapActivity.class);
+  	  	intent.putExtra("admin", false);
+        startActivity(intent);
 	}//end viewEventsinArea
 	
 	
