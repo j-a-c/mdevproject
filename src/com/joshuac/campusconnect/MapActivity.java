@@ -1,8 +1,12 @@
 package com.joshuac.campusconnect;
 
 
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.List;
 
+import oracle.jdbc.rowset.OracleCachedRowSet;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
@@ -11,6 +15,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,7 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 
-public class MapActivity extends FragmentActivity implements LocationListener
+public class MapActivity extends FragmentActivity implements LocationListener,ClientThread.newEventReceiver
 {
 	//map instance
 	private GoogleMap mMap;
@@ -169,5 +174,24 @@ public class MapActivity extends FragmentActivity implements LocationListener
 	public void onStatusChanged(String provider, int status, Bundle extras) 
 	{
 		// TODO Auto-generated method stub
+	}
+	public void getMapEvents(){
+		Thread client = new Thread(new ClientThread(this));
+	    client.start();
+	    try{
+	    	client.join();
+        } 
+	    catch (Exception e) { 
+    	}
+	}
+	public void getNewEvents(OracleCachedRowSet cset){
+		String str=null;
+		try{
+			str=cset.getString(1);
+		}
+		catch(Exception e){
+			
+		}
+		System.out.println(str);
 	}
 }

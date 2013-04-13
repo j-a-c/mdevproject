@@ -3,13 +3,11 @@ package com.joshuac.campusconnect;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
