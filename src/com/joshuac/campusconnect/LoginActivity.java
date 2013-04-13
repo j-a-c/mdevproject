@@ -45,7 +45,7 @@ public class LoginActivity extends Activity
 			intent = new Intent(getBaseContext(), StudentActivity.class);
 		}
 		else
-			intent = new Intent(getBaseContext(), MapActivity.class);
+			intent = new Intent(getBaseContext(), AdminActivity.class);
 		
 		//put data into intent
 		intent.putExtra("username", username);

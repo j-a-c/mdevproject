@@ -1,8 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".AddEventActivity" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEventActivity"  >
+<RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <TextView
         android:id="@+id/eventText"
@@ -15,12 +19,13 @@
 
     <EditText
         android:id="@+id/eventTextBox"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/eventText"
         android:inputType="text"
         android:textSize="20dp" 
         android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
         android:layout_centerHorizontal="true"
         android:hint = "i.e., Movie Night"/>
     
@@ -28,21 +33,21 @@
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/eventText"
+        android:layout_below="@+id/typeList"
         android:text="Date:"
         android:textSize="20dp"
-        android:layout_marginTop="50dp" 
+        android:layout_marginTop="20dp" 
         android:layout_marginLeft="20dp" />
      
       <TextView
         android:id="@+id/curdateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/eventText"
+        android:layout_below="@+id/typeList"
         android:layout_toRightOf="@+id/dateText"
         android:text="01/01/2013"
         android:textSize="20dp"
-        android:layout_marginTop="50dp" 
+        android:layout_marginTop="20dp" 
         android:layout_marginLeft="20dp" />
       
       <TextView
@@ -61,41 +66,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dateText"
-        android:text="Time:"
+        android:text="Time"
         android:textSize="20dp"
         android:layout_marginTop="50dp" 
         android:layout_marginLeft="20dp" />
      
      <TextView
+        android:id="@+id/startTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeText"
+        android:text="Start:"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp" 
+        android:layout_marginLeft="20dp" />
+      
+      <TextView
+        android:id="@+id/endTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/startTimeText"
+        android:text="End:"
+        android:textSize="20dp"
+        android:layout_marginTop="40dp" 
+        android:layout_marginLeft="20dp" />
+    
+      <TextView
         android:id="@+id/curtimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/timeText"
-        android:layout_below="@+id/dateText"
+        android:layout_toRightOf="@+id/startTimeText"
+        android:layout_below="@+id/timeText"
         android:textSize="20dp"
         android:text="12:00 PM"
-        android:layout_marginTop="50dp" 
+        android:layout_marginTop="10dp" 
         android:layout_marginLeft="20dp" />
      
      <TextView
         android:id="@+id/whereText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/timeText"
+        android:layout_below="@+id/endTimeText"
         android:text="Where:"
         android:textSize="20dp"
         android:layout_marginTop="50dp" 
         android:layout_marginLeft="20dp" />
+    
+     <TextView
+        android:id="@+id/ptText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/whereText"
+        android:text="PTS:"
+        android:textSize="20dp"
+        android:layout_marginTop="115dp" 
+        android:layout_marginLeft="20dp" />
      
      <EditText
          android:id="@+id/whereTextBox"
-         android:layout_width="200dp"
+         android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_centerHorizontal="true"
          android:hint="i.e., Reitz Union"
-         android:layout_below="@+id/timeText"
+         android:layout_below="@+id/endTimeText"
          android:layout_toRightOf="@+id/whereText"
          android:layout_marginTop="50dp" 
+         android:layout_marginRight="20dp" 
          android:inputType="text"
          android:textSize="20sp" />
      
@@ -106,7 +142,6 @@
          android:layout_centerHorizontal="true"
          android:layout_marginTop="35dp"
          android:layout_below="@+id/whereText"
-         android:layout_toRightOf="@+id/whereText"
          android:text="Map Location" />
      
       <Button
@@ -115,8 +150,7 @@
          android:layout_height="wrap_content"
          android:layout_centerHorizontal="true"
          android:layout_marginTop="25dp"
-         android:layout_below="@+id/locationButton"
-         android:layout_toRightOf="@+id/whereText"
+         android:layout_below="@+id/ptList"
          android:text="Submit Event" />
 
       <Button
@@ -138,5 +172,42 @@
           android:layout_toRightOf="@+id/submitButton"
           android:text="Change"
           android:textSize="20dp" />
+       
+       <Spinner
+           android:id="@+id/typeList"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/eventTextBox"
+           android:layout_marginTop="20dp" 
+           android:layout_centerHorizontal="true"/>
+       
+       <Spinner
+           android:id="@+id/ptList"
+           android:layout_width="100dp"
+           android:layout_height="wrap_content"
+           android:layout_alignLeft="@+id/submitButton"
+           android:layout_alignRight="@+id/submitButton"
+           android:layout_below="@+id/locationButton"
+           android:layout_marginTop="25dp" />
+
+       <TextView
+           android:id="@+id/curEndTimeText"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/whereTextBox"
+           android:layout_alignLeft="@+id/curtimeText"
+           android:text="12:00 PM"
+           android:textSize="20dp" />
+
+       <Button
+           android:id="@+id/endTimeButton"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@+id/curEndTimeText"
+           android:layout_alignBottom="@+id/curEndTimeText"
+           android:layout_toRightOf="@+id/submitButton"
+           android:text="Change"
+           android:textSize="20dp" />
 
 </RelativeLayout>
+</ScrollView>
