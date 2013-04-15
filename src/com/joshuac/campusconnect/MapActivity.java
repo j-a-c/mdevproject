@@ -26,7 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
 
-public class MapActivity extends FragmentActivity implements LocationListener,ClientThread.newEventReceiver
+public class MapActivity extends FragmentActivity implements LocationListener, ClientThread.newEventReceiver
 {
 	//map instance
 	private GoogleMap mMap;
@@ -128,6 +128,7 @@ public class MapActivity extends FragmentActivity implements LocationListener,Cl
 		else
 		{
 			//load events in area
+			getMapEvents();
 		}
         //mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
 	}//end setUpMap
@@ -175,6 +176,8 @@ public class MapActivity extends FragmentActivity implements LocationListener,Cl
 	{
 		// TODO Auto-generated method stub
 	}
+	
+	
 	public void getMapEvents(){
 		Thread client = new Thread(new ClientThread(this));
 	    client.start();
@@ -184,6 +187,8 @@ public class MapActivity extends FragmentActivity implements LocationListener,Cl
 	    catch (Exception e) { 
     	}
 	}
+	
+	//ClientThread.newEventReceiver interface
 	public void getNewEvents(OracleCachedRowSet cset){
 		String str=null;
 		try{
