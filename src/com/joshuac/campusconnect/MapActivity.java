@@ -1,7 +1,10 @@
+
 package com.joshuac.campusconnect;
 
 
 import java.util.List;
+
+import oracle.jdbc.rowset.OracleCachedRowSet;
 
 import android.content.Intent;
 import android.location.Criteria;
@@ -24,7 +27,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class MapActivity extends FragmentActivity implements LocationListener
+public class MapActivity extends FragmentActivity implements LocationListener,ClientThread.newEventReceiver
 {
 	//map instance
 	private GoogleMap mMap;
@@ -221,4 +224,25 @@ public class MapActivity extends FragmentActivity implements LocationListener
 	        startActivity(intent);
 	    }
 	  };
+	  
+	  public void getMapEvents(){
+			Thread client = new Thread(new ClientThread(this));
+		    client.start();
+		    try{
+		    	client.join();
+	        } 
+		    catch (Exception e) { 
+	    	}
+		}
+		public void getNewEvents(OracleCachedRowSet cset){
+			String str=null;
+			try{
+				str=cset.getString(1);
+			}
+			catch(Exception e){
+				
+			}
+			System.out.println(str);
+		}
 }
+

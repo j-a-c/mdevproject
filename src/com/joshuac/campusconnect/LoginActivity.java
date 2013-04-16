@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 public class LoginActivity extends Activity
 {
+	String s;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
