@@ -26,7 +26,9 @@ public class StudentActivity extends Activity
 	//called when "view upcoming events" button is pressed
 	public void viewUpcomingEvents(View v)
 	{
-		System.out.println("up");
+  	  	Intent intent = new Intent(getBaseContext(), UpcomingActivity.class);
+  	  	intent.putExtra("admin", false);
+        startActivity(intent);
 	}//end viewUpcomingEvents
 	
 	

@@ -150,6 +150,7 @@ public class MapActivity extends FragmentActivity implements LocationListener,Cl
             if (mMap != null) 
             {
                 setUpMap();
+                getMapEvents();
             }
         }
     }//end setUpMapIfNeeded
@@ -224,7 +225,6 @@ public class MapActivity extends FragmentActivity implements LocationListener,Cl
 	        startActivity(intent);
 	    }
 	  };
-	  
 	  public void getMapEvents(){
 			Thread client = new Thread(new ClientThread(this));
 		    client.start();
@@ -234,13 +234,15 @@ public class MapActivity extends FragmentActivity implements LocationListener,Cl
 		    catch (Exception e) { 
 	    	}
 		}
+
+		//ClientThread.newEventReceiver interface
 		public void getNewEvents(OracleCachedRowSet cset){
 			String str=null;
 			try{
 				str=cset.getString(1);
 			}
 			catch(Exception e){
-				
+
 			}
 			System.out.println(str);
 		}
