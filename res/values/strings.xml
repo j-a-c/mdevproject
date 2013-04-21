@@ -10,5 +10,6 @@
     <string name="title_activity_map_fragment">MapFragment</string>
     <string name="title_activity_main_map_fragement">MainMapFragement</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_events_in_area">EventsInAreaActivity</string>
 
 </resources>

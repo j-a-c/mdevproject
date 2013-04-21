@@ -79,6 +79,10 @@
             android:name="com.joshuac.campusconnect.MainMapFragement"
             android:label="@string/title_activity_main_map_fragement" >
         </activity>
+        <activity
+            android:name="com.joshuac.campusconnect.EventsInAreaActivity"
+            android:label="@string/title_activity_events_in_area" >
+        </activity>
     </application>
 
 </manifest>

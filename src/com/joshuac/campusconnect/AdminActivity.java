@@ -44,6 +44,8 @@ public class AdminActivity extends Activity {
 		      }
 		      else if( currentButton.getId() == ((Button)v).getId() ){
 		          // it was the second button
+		    	  Intent intent = new Intent(getBaseContext(), EventsInAreaActivity.class);
+		    	  startActivity(intent);
 		      }
 		  }
 	};
