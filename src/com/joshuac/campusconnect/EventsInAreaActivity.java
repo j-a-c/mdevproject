@@ -44,8 +44,8 @@ public class EventsInAreaActivity extends Activity  {
 		//Test case
 	    EventObj test = new EventObj("Movie","CISE","4/21/2013","1:00PM","2:00PM","Reitz",1,1,10);
 	    EventObj test2 = new EventObj("Frisbee","Pedro","4/21/2013","5:00PM","7:00PM","Reitz",1,1,20);
-	    allEvents.add(test);
-	    allEvents.add(test2);
+	    eventList.add(test);
+	    eventList.add(test2);
 	    //Fill text view with clickable arraylist objects		    
 	 	adapter = new EventArrayAdapter(this,eventList );
 	    listView = (ListView)findViewById(R.id.eventList);
@@ -55,7 +55,7 @@ public class EventsInAreaActivity extends Activity  {
 	    listView.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View view,
 	            int position, long id) {
-	             event = allEvents.get(position);	
+	             event = eventList.get(position);	
 	        	 AlertDialog.Builder alert = new AlertDialog.Builder(EventsInAreaActivity.this);                 
 	      	     alert.setTitle("Join this Event");  
 	      	     alert.setMessage("Event: " + event.eventName+"\n" +

@@ -23,7 +23,7 @@ class ClientThread extends Thread {
 	StudentActivity stAct;
 	LoginActivity lAct;
 	EventsInAreaActivity eAct;
-	AdminPointsActivity adminAct;
+//	AdminPointsActivity adminAct;
 	AddEventActivity addEAct;
 	
 	
@@ -38,10 +38,10 @@ class ClientThread extends Thread {
 		this.eAct = act;
 		this.option=3;
 	}
-	public ClientThread(AdminPointsActivity act){
-		this.adminAct = act;
-		this.option=5;
-	}
+//	public ClientThread(AdminPointsActivity act){
+//		this.adminAct = act;
+//		this.option=5;
+//	}
 	public ClientThread(AddEventActivity act){
 		this.addEAct = act;
 		this.option=6;
@@ -85,7 +85,7 @@ class ClientThread extends Thread {
             		out.writeObject(stAct.attended);
             		break;
             	case 5:		//retrieve attendance data for all students
-            		adminAct.students = (ArrayList<Attendance>)in.readObject();
+//            		adminAct.students = (ArrayList<Attendance>)in.readObject();
             		break;
             	case 6:		//send attendance data for one student
             		out.writeObject(addEAct.event);
