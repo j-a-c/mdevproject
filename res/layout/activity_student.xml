@@ -35,16 +35,6 @@
         android:text="Friends" />
 
     <Button
-        android:id="@+id/currentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bcheckinButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
-        android:onClick="viewEventsInArea"
-        android:text="Current Events in Area" />
-
-    <Button
         android:id="@+id/bcheckinButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,5 +43,15 @@
         android:layout_marginBottom="24dp"
         android:onClick="checkinToEvent"
         android:text="Checkin" />
+
+    <Button
+        android:id="@+id/currentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bcheckinButton"
+        android:layout_alignRight="@+id/upcomingButton"
+        android:layout_marginBottom="36dp"
+        android:onClick="viewEventsInArea"
+        android:text="Current Events in Area" />
 
 </RelativeLayout>
