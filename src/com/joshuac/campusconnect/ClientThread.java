@@ -23,7 +23,7 @@ class ClientThread extends Thread {
 	StudentActivity stAct;
 	LoginActivity lAct;
 	EventsInAreaActivity eAct;
-//	AdminPointsActivity adminAct;
+	AdminPtsActivity adminAct;
 	AddEventActivity addEAct;
 	
 	
@@ -38,10 +38,10 @@ class ClientThread extends Thread {
 		this.eAct = act;
 		this.option=3;
 	}
-//	public ClientThread(AdminPointsActivity act){
-//		this.adminAct = act;
-//		this.option=5;
-//	}
+	public ClientThread(AdminPtsActivity act){
+		this.adminAct = act;
+		this.option=5;
+	}
 	public ClientThread(AddEventActivity act){
 		this.addEAct = act;
 		this.option=6;

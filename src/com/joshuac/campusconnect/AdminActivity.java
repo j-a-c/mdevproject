@@ -12,6 +12,7 @@ public class AdminActivity extends Activity {
 	Button addButton;
 	Button upcomingButton;
 	Button currentButton;
+	Button attendButton;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,9 +20,11 @@ public class AdminActivity extends Activity {
 		addButton = (Button) findViewById(R.id.addButton);
 		upcomingButton = (Button) findViewById(R.id.upcomingButton);
 		currentButton = (Button) findViewById(R.id.currentButton);
+		attendButton = (Button) findViewById(R.id.attendButton);
 		addButton.setOnClickListener(buttonHandler);
 		upcomingButton.setOnClickListener(buttonHandler);
 		currentButton.setOnClickListener(buttonHandler);
+		attendButton.setOnClickListener(buttonHandler);
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,6 +46,11 @@ public class AdminActivity extends Activity {
 		    	  startActivity(intent);
 		      }
 		      else if( currentButton.getId() == ((Button)v).getId() ){
+		          // it was the second button
+		    	  Intent intent = new Intent(getBaseContext(), EventsInAreaActivity.class);
+		    	  startActivity(intent);
+		      }
+		      else if( attendButton.getId() == ((Button)v).getId() ){
 		          // it was the second button
 		    	  Intent intent = new Intent(getBaseContext(), EventsInAreaActivity.class);
 		    	  startActivity(intent);

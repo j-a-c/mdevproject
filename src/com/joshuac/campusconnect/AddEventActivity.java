@@ -315,6 +315,17 @@ public class AddEventActivity extends Activity {
 		location = whereText.getText().toString();
 		pts = (Integer) ptList.getSelectedItem();
 		event = new EventObj(eventName,eventType,date,time,time2,location, latitude, latitude, pts);
+		 Thread client = new Thread(new ClientThread(this));
+		    client.start();
+		    try{
+		    	client.join();
+			    
+	        }
+		    catch (Exception e) {
+	    		Toast.makeText(getApplicationContext(), "Sorry, Could not connect to Server", Toast.LENGTH_LONG).show();
+		    	//finish();
+	        	
+	    	}
 	}
 		
 	public boolean dataIsValid(EventObj event){

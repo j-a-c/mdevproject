@@ -94,10 +94,10 @@ public class EventsInAreaActivity extends Activity  {
 		super.onStart();
 		//option is based on servers need
 		//int option = 1;
-	    //Thread client = new Thread(new ClientThread(this,option));
-	    //client.start();
+	    Thread client = new Thread(new ClientThread(this));
+	    client.start();
 	    try{
-	    //	client.join();
+	    	client.join();
 		    //populate active games list 
 	    	popEventList();
         }

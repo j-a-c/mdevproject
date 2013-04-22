@@ -15,7 +15,7 @@ public class EventArrayAdapter extends ArrayAdapter<EventObj>{
 	  private final List<EventObj> eventList;  
 
 	  public EventArrayAdapter(Context context, List<EventObj> eventList) {
-	    super(context, R.layout.eventobj, eventList);
+	    super(context, R.layout.eventobj, eventList );
 	    this.context = context;
 	    this.eventList = eventList;
 	  }

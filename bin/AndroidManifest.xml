@@ -83,6 +83,10 @@
             android:name="com.joshuac.campusconnect.EventsInAreaActivity"
             android:label="@string/title_activity_events_in_area" >
         </activity>
+        <activity
+            android:name="com.joshuac.campusconnect.AdminPtsActivity"
+            android:label="@string/title_activity_admin_pts" >
+        </activity>
     </application>
 
 </manifest>

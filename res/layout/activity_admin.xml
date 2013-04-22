@@ -29,8 +29,17 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_centerHorizontal="true"
-         android:layout_below="@+id/currentButton"
+         android:layout_below="@+id/attendButton"
         android:layout_marginTop="36dp"
          android:text="Add Event" />
+     
+     <Button
+         android:id="@+id/attendButton"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+         android:layout_below="@+id/currentButton"
+        android:layout_marginTop="36dp"
+         android:text="View Student Points" />
 
 </RelativeLayout>
