@@ -36,9 +36,12 @@ public class StudentActivity extends Activity
 	//called when "current events in area" button is pressed
 	public void viewEventsInArea(View v)
 	{
-  	  	Intent intent = new Intent(getBaseContext(), MapActivity.class);
-  	  	intent.putExtra("admin", false);
-        startActivity(intent);
+  	  	//Intent intent = new Intent(getBaseContext(), MapActivity.class);
+  	  	//intent.putExtra("admin", false);
+        //startActivity(intent);
+		
+		Intent intent = new Intent(getBaseContext(), EventsInAreaActivity.class);
+  	  	startActivity(intent);
 	}//end viewEventsinArea
 	
 	
@@ -59,7 +62,8 @@ public class StudentActivity extends Activity
 	//called when "setting" button is pressed
 	public void viewSettings(View v)
 	{
-		System.out.println("settings");
+		Intent intent = new Intent(getBaseContext(), SettingsActivity.class);
+  	  	startActivity(intent);
 	}//end viewSettings
 	
 }//end StudentActivity

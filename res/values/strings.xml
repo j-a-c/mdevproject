@@ -5,11 +5,14 @@
     <string name="action_settings">Settings</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_admin">AdminActivity</string>
-    <string name="title_activity_add_event">AddEventActivity</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_add_event">Add Event</string>
+    <string name="title_activity_main">Log In</string>
     <string name="title_activity_map_fragment">MapFragment</string>
     <string name="title_activity_main_map_fragement">MainMapFragement</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_events_in_area">EventsInAreaActivity</string>
-
+    <string name="title_activity_events_in_area">Events In Area</string>
+    <string name="title_activity_student">Student Options</string>
+    <string name="title_activity_upcoming">Upcoming Events</string>
+    <string name="title_activity_checkin">Checkin to Event</string>
+	<string name="title_activity_settings">Settings</string>
+    
 </resources>
