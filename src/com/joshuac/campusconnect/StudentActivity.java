@@ -9,6 +9,7 @@ public class StudentActivity extends Activity
 {
 
 	String username;
+	public Attendance attended;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 

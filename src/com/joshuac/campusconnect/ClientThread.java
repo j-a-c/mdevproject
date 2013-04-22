@@ -4,33 +4,55 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import oracle.jdbc.rowset.OracleCachedRowSet;
-
 import android.app.Activity;
 import android.content.Context;
 
 class ClientThread extends Thread {
 
-	public interface newEventReceiver{
-		public void getNewEvents(OracleCachedRowSet cset);
-	}
-
 	Socket socket=null;
 	Context context=null;
 	String SERVER_IP=null;
-	OracleCachedRowSet cset=null;
 	ObjectOutputStream out=null;
-	Activity mCallback;
-	//MapActivity mapActivity=null;
+	ObjectInputStream in=null;
+	
+	//Activities
+	UpcomingActivity upAct;
+	StudentActivity stAct;
+	LoginActivity lAct;
+	EventsInAreaActivity eAct;
+//	AdminPointsActivity adminAct;
+	AddEventActivity addEAct;
+	
+	
+	int option;
+	
 
-	public ClientThread(Context context, String SERVER_IP){
-		this.context=context;
-		this.SERVER_IP=SERVER_IP;
+	public ClientThread(UpcomingActivity act){
+		this.upAct = act;
+		this.option=2;
 	}
-
-	public ClientThread(Activity mCallback){ //MapActivity mapActivity
-		this.mCallback = mCallback;
+	public ClientThread(EventsInAreaActivity act){
+		this.eAct = act;
+		this.option=3;
+	}
+//	public ClientThread(AdminPointsActivity act){
+//		this.adminAct = act;
+//		this.option=5;
+//	}
+	public ClientThread(AddEventActivity act){
+		this.addEAct = act;
+		this.option=6;
+	}
+	public ClientThread(StudentActivity act){ //MapActivity mapActivity
+		this.stAct = act;
+		this.option=4;
+	}
+	public ClientThread(LoginActivity act){ //MapActivity mapActivity
+		this.lAct = act;
+		this.option=1;
 	}
 
     public void run() {
@@ -39,32 +61,40 @@ class ClientThread extends Thread {
             this.socket = new Socket(serverAddr, 9000);
             
             try {
-            	ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-            	cset = (OracleCachedRowSet)in.readObject();
-            	//mapActivity.getNewEvents(cset);
-            	((newEventReceiver) mCallback).getNewEvents(cset);
+            	in = new ObjectInputStream(socket.getInputStream());
             	
-//            	out = new ObjectOutputStream(socket.getOutputStream());
-//            	out.writeObject(gs);
-//            	System.out.println("test sendData6");
-//            	out.flush();
+            	System.out.println("test sendData5");
+            	out = new ObjectOutputStream(socket.getOutputStream());
+            	out.writeObject(Integer.toString(option));
+            	System.out.println("test sendData6");
+            	out.flush();
+            	
+            	switch(option){
+            	case 1:		//login activity
+            		out.writeObject(lAct.login);
+            		out.flush();
+            		lAct.logResult=in.readInt();
+            		break;
+            	case 2:		//retrieve all upcoming events
+            		upAct.events = (ArrayList<EventObj>)in.readObject();
+            		break;
+            	case 3:		//retrieve all events
+            		eAct.allEvents = (ArrayList<EventObj>)in.readObject();
+            		break;
+            	case 4:		//send attendance data for one student
+            		out.writeObject(stAct.attended);
+            		break;
+            	case 5:		//retrieve attendance data for all students
+//            		adminAct.students = (ArrayList<Attendance>)in.readObject();
+            		break;
+            	case 6:		//send attendance data for one student
+            		out.writeObject(addEAct.event);
+            		break;
+            	}
             }
             catch(Exception e){
             	System.out.println(e.toString());
             }
-//            try{
-//            	FileOutputStream fos = context.openFileOutput("tcpaftertest.txt",0);
-//                OutputStreamWriter osw = new OutputStreamWriter(fos);
-//
-//                osw.write("IP addr : "+gs.getUser1());
-//                osw.flush();
-//                osw.close();
-//                fos.close();
-//            } 
-//            catch (Exception e) {
-//                final String error = e.getLocalizedMessage();
-//                Log.d("test2", "IP addr : " + error);
-//            }
 
         } 
         catch (Exception e) {
@@ -74,7 +104,7 @@ class ClientThread extends Thread {
         finally{
             //Close connections
             try{
-                    //in.close();
+                    in.close();
                     out.close();
                     socket.close();
             }

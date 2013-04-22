@@ -1,7 +1,11 @@
 package com.joshuac.campusconnect;
 
-import com.joshuac.beatmatrix.BeatButton;
-import com.joshuac.beatmatrix.R;
+import oracle.jdbc.rowset.OracleCachedRowSet;
+
+//import com.joshuac.beatmatrix.BeatButton;
+//import com.joshuac.beatmatrix.R;
+
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,11 +15,14 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-public class UpcomingActivity extends Activity implements ClientThread.newEventReceiver
+public class UpcomingActivity extends Activity
 {
 	
 	//is user viewing map an admin?
 	private boolean isAdmin = false;
+	
+	//event list
+	ArrayList<EventObj> events;
 	
 	//client thread
 	private Thread client;
@@ -58,7 +65,7 @@ public class UpcomingActivity extends Activity implements ClientThread.newEventR
 	}
 	
 	//ClientThread.newEventReceiver interface
-	public void getNewEvents(OracleCachedRowSet cset){
+	public void getNewEvents(ArrayList<EventObj> events){
 		try{			
 			//init new row, layout params, and gravity
 			TableRow trow = (TableRow) getLayoutInflater().inflate(R.layout.activity_upcoming_row, null);
