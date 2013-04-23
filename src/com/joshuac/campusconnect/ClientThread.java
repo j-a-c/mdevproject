@@ -85,9 +85,9 @@ class ClientThread extends Thread {
             		out.writeObject(stAct.attended);
             		break;
             	case 5:		//retrieve attendance data for all students
-//            		adminAct.students = (ArrayList<Attendance>)in.readObject();
+            		adminAct.students = (ArrayList<Attendance>)in.readObject();
             		break;
-            	case 6:		//send attendance data for one student
+            	case 6:		//add event
             		out.writeObject(addEAct.event);
             		break;
             	}
