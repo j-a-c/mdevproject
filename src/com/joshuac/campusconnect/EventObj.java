@@ -7,11 +7,11 @@ public class EventObj implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	String eventName;
-	String date,startTime,endTime;
-	String location,eventType;
-	double latitude,longitude;
-	int pts;
+	public String eventName;
+	public String date,startTime,endTime;
+	public String location,eventType;
+	public double latitude,longitude;
+	public int pts;
 	
 	public EventObj (String eventName,String eventType,String date, String startTime, String endTime,
 			String location, double latitude, double longitude, int pts)

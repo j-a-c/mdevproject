@@ -57,7 +57,7 @@ class ClientThread extends Thread {
 
     public void run() {
         try {
-            InetAddress serverAddr = InetAddress.getByName("10.136.52.0");
+            InetAddress serverAddr = InetAddress.getByName("10.137.106.76");
             this.socket = new Socket(serverAddr, 9000);
             
             try {
@@ -85,9 +85,9 @@ class ClientThread extends Thread {
             		out.writeObject(stAct.attended);
             		break;
             	case 5:		//retrieve attendance data for all students
-//            		adminAct.students = (ArrayList<Attendance>)in.readObject();
+            		adminAct.students = (ArrayList<Attendance>)in.readObject();
             		break;
-            	case 6:		//send attendance data for one student
+            	case 6:		//add event
             		out.writeObject(addEAct.event);
             		break;
             	}
