@@ -2,9 +2,8 @@
 package com.joshuac.campusconnect;
 
 
+import java.util.ArrayList;
 import java.util.List;
-
-import oracle.jdbc.rowset.OracleCachedRowSet;
 
 import android.content.Intent;
 import android.location.Criteria;
@@ -39,6 +38,9 @@ public class MapActivity extends FragmentActivity implements LocationListener
 	//list of location providers
 	private List<String> enabledProviders;
 	
+	 //Event ArrayList from Server
+	 public ArrayList<EventObj> allEvents = null;
+	
 	//current location
 	private double currentLat = 0;
 	private double currentLong = 0;
@@ -54,13 +56,20 @@ public class MapActivity extends FragmentActivity implements LocationListener
 		super.onCreate(savedInstanceState);
 		//set view
 		setContentView(R.layout.activity_map);
-		System.out.println("MAP 1");
+		System.out.println("MAP 1sasdf");
 		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 		
 		//get bundle and set admin status
 		Intent intentInfo = getIntent();
 		if (intentInfo != null)
 			isAdmin = intentInfo.getBooleanExtra("admin", false);
+		
+		//create test cases
+		allEvents = new ArrayList<EventObj>();
+	    EventObj test = new EventObj("Movie","CISE","4/21/2013","1:00PM","2:00PM","Reitz",29.646465,-82.347786,10);
+	    EventObj test2 = new EventObj("Frisbee","Pedro","4/21/2013","5:00PM","7:00PM","Reitz",29.64819,-82.341907,20);
+	    allEvents.add(test); allEvents.add(test2);
+		
 		
 		setUpMapIfNeeded();
 		
@@ -131,6 +140,27 @@ public class MapActivity extends FragmentActivity implements LocationListener
 	
 	
 	@Override
+	//FETCH events from server
+	protected void onStart() {
+		super.onStart();
+		//option is based on servers need
+		//int option = 1;
+	    Thread client = new Thread(new ClientThread(this));
+	    client.start();
+	    try{
+	    	client.join();
+        }
+	    catch (Exception e) {
+    		Toast.makeText(getApplicationContext(), "Sorry, Could not connect to Server", Toast.LENGTH_LONG).show();
+	    	//finish();
+        	
+    	}
+	   
+	}
+	
+	
+	
+	@Override
 	protected void onPause() 
 	{
 		super.onPause();
@@ -167,10 +197,31 @@ public class MapActivity extends FragmentActivity implements LocationListener
 		}
 		else
 		{
-			//load events in area
+			//do stuff
 		}
-        //mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
 	}//end setUpMap
+	
+	//populate map
+	void popMap(){
+		//iterate over events
+		for(int i = 0; i < allEvents.size(); i++){
+			//save vars
+			double lat = allEvents.get(i).latitude;
+			double lng = allEvents.get(i).longitude;
+			String title = allEvents.get(i).eventName;
+			String startTime = allEvents.get(i).startTime;
+			String endTime = allEvents.get(i).endTime;
+			String location = allEvents.get(i).location;
+			int pts = allEvents.get(i).pts;
+			
+			mMap.addMarker(new MarkerOptions()
+				.position(new LatLng(lat, lng))
+				.title(title)
+				.snippet(startTime + " to " + endTime + " @ " + location
+						+ ". Worth " + pts + " points"));
+		}
+	}
+	
 
 	
 	/*
@@ -190,6 +241,9 @@ public class MapActivity extends FragmentActivity implements LocationListener
 		//update map
 		mMap.moveCamera(center);
 		mMap.animateCamera(zoom);
+		
+		//load events in area
+    	popMap();
 		
 	}//end onLocationChanged
 

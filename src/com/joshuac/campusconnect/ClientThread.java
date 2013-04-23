@@ -25,6 +25,7 @@ class ClientThread extends Thread {
 	EventsInAreaActivity eAct;
 	AdminPtsActivity adminAct;
 	AddEventActivity addEAct;
+	MapActivity mAct;
 	
 	
 	int option;
@@ -36,6 +37,10 @@ class ClientThread extends Thread {
 	}
 	public ClientThread(EventsInAreaActivity act){
 		this.eAct = act;
+		this.option=3;
+	}
+	public ClientThread(MapActivity act){
+		this.mAct = act;
 		this.option=3;
 	}
 	public ClientThread(AdminPtsActivity act){
@@ -76,7 +81,7 @@ class ClientThread extends Thread {
             		lAct.logResult=in.readInt();
             		break;
             	case 2:		//retrieve all upcoming events
-            		upAct.events = (ArrayList<EventObj>)in.readObject();
+            		upAct.allEvents = (ArrayList<EventObj>)in.readObject();
             		break;
             	case 3:		//retrieve all events
             		eAct.allEvents = (ArrayList<EventObj>)in.readObject();

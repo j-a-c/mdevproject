@@ -74,6 +74,7 @@ public class LoginActivity extends Activity
 	
 	void checkAdmin(){
 		Intent intent;
+		//logResult = 0;
 		if(logResult == 1){
 			intent = new Intent(getBaseContext(), AdminActivity.class);
 			startActivity(intent);

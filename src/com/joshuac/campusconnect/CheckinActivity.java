@@ -13,10 +13,6 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.LatLng;
-
 public class CheckinActivity extends Activity implements LocationListener
 {
 	
@@ -24,6 +20,8 @@ public class CheckinActivity extends Activity implements LocationListener
 	private LocationManager locationManager;
 	//list of location providers
 	private List<String> enabledProviders;
+	//lat, long
+	public double latitude, longitude;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -75,7 +73,9 @@ public class CheckinActivity extends Activity implements LocationListener
 	@Override
 	public void onLocationChanged(Location location) 
 	{	
-		//TODO update location
+		//update location
+		this.latitude = location.getLatitude();
+		this.longitude = location.getLongitude();
 		
 	}//end onLocationChanged
 

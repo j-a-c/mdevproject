@@ -1,57 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
 
-    <Button
-        android:id="@+id/upcomingButton"
+    <ImageView
+        android:id="@+id/upcoming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
         android:onClick="viewUpcomingEvents"
-        android:text="View Upcoming Events"
-        android:textAlignment="center" />
+        android:src="@drawable/upcoming" />
 
-    <Button
-        android:id="@+id/settingsButton"
+    <ImageView
+        android:id="@+id/current"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/bcheckinButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:onClick="viewCurrentEvents"
+        android:src="@drawable/current" />
+
+    <ImageView
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="39dp"
+        android:layout_centerHorizontal="true"
         android:onClick="viewSettings"
-        android:text="Settings" />
+        android:src="@drawable/settings" />
 
-    <Button
-        android:id="@+id/friendsButton"
+    <ImageView
+        android:id="@+id/checkin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/settingsButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:onClick="viewFriendActivity"
-        android:text="Friends" />
-
-    <Button
-        android:id="@+id/bcheckinButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/friendsButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/upcoming"
         android:onClick="checkinToEvent"
-        android:text="Checkin" />
+        android:src="@drawable/checkin" />
 
-    <Button
-        android:id="@+id/currentButton"
+    <ImageView
+        android:id="@+id/friends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bcheckinButton"
-        android:layout_alignRight="@+id/upcomingButton"
-        android:layout_marginBottom="36dp"
-        android:onClick="viewEventsInArea"
-        android:text="Current Events in Area" />
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/checkin"
+        android:onClick="viewFriendActivity"
+        android:src="@drawable/friends" />
 
 </RelativeLayout>
+
+
+

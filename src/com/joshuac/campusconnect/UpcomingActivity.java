@@ -1,110 +1,132 @@
 package com.joshuac.campusconnect;
 
-
-//import com.joshuac.beatmatrix.BeatButton;
-//import com.joshuac.beatmatrix.R;
-
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class UpcomingActivity extends Activity
-{
+public class UpcomingActivity extends Activity  {
 
+	//Event ArrayList User side
+	 EventObj event = null;
+	 public ListView listView;
+	 public List<EventObj> eventList =  new ArrayList<EventObj>();
+	 EventArrayAdapter adapter;
 	
-	//is user viewing map an admin?
-	private boolean isAdmin = false;
-	
-	//event list
-	ArrayList<EventObj> events;
-	
-	//client thread
-	private Thread client;
-	//table layout for this view
-	private TableLayout upcomingActivityTable;
+	 //Event ArrayList from Server
+	 public ArrayList<EventObj> allEvents =null;
+	/** Called when the activity is first created. */
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_upcoming);
-		
-		Intent intentInfo = getIntent();
-		if (intentInfo != null)
-			isAdmin = intentInfo.getBooleanExtra("admin", false);
-		
-		//find layout so we can dynamically add rows later
-		upcomingActivityTable = (TableLayout) findViewById(R.id.upcomingActivityTable);
-		
-		//test events
-		EventObj test = new EventObj("Movie","CISE","4/21/2013","1:00PM","2:00PM","Reitz",1,1,10);
-	    EventObj test2 = new EventObj("Frisbee","Pedro","4/21/2013","5:00PM","7:00PM","Reitz",1,1,20);
-	    ArrayList<EventObj> testEvents = new ArrayList<EventObj>();
-	    testEvents.add(test);
-	    testEvents.add(test2);
-	    getNewEvents(testEvents);
+	public void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.activity_events_in_area);
+	    //reset title
+	    ((TextView)findViewById(R.id.eventLabel)).setText("Upcoming Events");
 	    
-		
-		//create thread to receive new events
-		createClientThread();
+		//Test case
+	    EventObj test = new EventObj("Movie","CISE","4/21/2013","1:00PM","2:00PM","Reitz",1,1,10);
+	    EventObj test2 = new EventObj("Frisbee","Pedro","4/21/2013","5:00PM","7:00PM","Reitz",1,1,20);
+	    //eventList.add(test);
+	    //eventList.add(test2);
+	    //Fill text view with clickable arraylist objects		    
+	 	adapter = new EventArrayAdapter(this,eventList );
+	    listView = (ListView)findViewById(R.id.eventList);
+	    listView.setAdapter(adapter);
+	    
+	    //Back button
+	    Button backButton = (Button) findViewById(R.id.backButton);
+		backButton.setOnClickListener(new OnClickListener() {
 
-		
-	}//end onCreate
-	
+		    public void onClick(View v) {
+		    	finish();
+		    }
+		 });
+	    
+	    //When event is clicked open dialog
+	    listView.setOnItemClickListener(new OnItemClickListener() {
+	        public void onItemClick(AdapterView<?> parent, View view,
+	            int position, long id) {
+	             event = eventList.get(position);	
+	        	 AlertDialog.Builder alert = new AlertDialog.Builder(UpcomingActivity.this);                 
+	      	     alert.setTitle("Join this Event");  
+	      	     alert.setMessage("Event: " + event.eventName+"\n" +
+	      	    		 		  "Type: " + event.eventType+"\n" +
+	      	    		 		  "Date: " + event.date +"\n" +
+	      	    		 		  "Start: " + event.startTime + "\n" +
+	      	    		 		  "End: " + event.endTime + "\n" +
+	      	    		 		  "Location: " +event.location + "\n" +
+	      	    		 		  "PTS: " + event.pts);                
+		      	    
+		      	     alert.setPositiveButton("Join", new DialogInterface.OnClickListener() {  
+		      	    	 public void onClick(DialogInterface dialog, int whichButton) {  
+		      	    		//Join event
+		      	    		//start checking time
+		      	    		
+		      	    		return;
+		      	        }  
+		      	      });  
+		      	    
+
+		      	     alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		      	         public void onClick(DialogInterface dialog, int which) {
+		      	             return;   
+		      	         }
+		      	     });
+		      	             alert.show();  
+		      	  }
+		         
+		        	  
+		      });
+	}
+
 	@Override
-	protected void onPause()
-	{
-		super.onPause();
-		
-	}
-	
-	public void createClientThread(){
-		client = new Thread(new ClientThread(this));
-		try{
+	//FETCH events from server
+	protected void onStart() {
+		super.onStart();
+		//option is based on servers need
+		//int option = 1;
+	    Thread client = new Thread(new ClientThread(this));
+	    client.start();
+	    try{
 	    	client.join();
-		} 
-		catch (Exception e) { 
-			Toast.makeText(getApplicationContext(), "Sorry, Could not Connect to Server", Toast.LENGTH_LONG).show();
-
-		}
+		    //populate active games list 
+	    	popEventList();
+        }
+	    catch (Exception e) {
+    		Toast.makeText(getApplicationContext(), "Sorry, Could not connect to Server", Toast.LENGTH_LONG).show();
+	    	//finish();
+        	
+    	}
+	   
 	}
 	
-	//ClientThread.newEventReceiver interface
-	public void getNewEvents(ArrayList<EventObj> events){
-		try{
-			//add all events to table
-			for(EventObj event : events)
-			{
-				//init new row, layout params, and gravity
-				TableRow trow = (TableRow) getLayoutInflater().inflate(R.layout.activity_upcoming_row, null);
-				TableLayout.LayoutParams lp = new TableLayout.LayoutParams(
-						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-				trow.setGravity(Gravity.CENTER);
-				
-				//add contents to row
-				TextView eventName = (TextView) trow.findViewById(R.id.eventName);
-				eventName.setText(event.eventName);
-				TextView location = (TextView) trow.findViewById(R.id.location);
-				location.setText(event.location);
-				TextView time = (TextView) trow.findViewById(R.id.time);
-				time.setText(event.startTime);
-				//add row to table
-				upcomingActivityTable.addView(trow, lp);
-			}
-			//add all events to current list
-			this.events.addAll(events);
-		}
-		catch(Exception e){
-			
-		}
-	}
+		
+	 @Override
+	    protected void onStop() {
+	        super.onStop();
+	        return;
+	    } 	 
+	 
+	 //populate event list
+	 void popEventList(){
+		 for(int i = 0; i < allEvents.size(); i++){
+			 
+			 eventList.add(allEvents.get(i));
+			 adapter.notifyDataSetChanged();
+			 
+		 }
+	 }
+	
 	
 }

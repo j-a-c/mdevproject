@@ -23,7 +23,7 @@
          android:text="Help" />
 
      <ImageView
-         android:id="@+id/imageView1"
+         android:id="@+id/upcoming"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentTop="true"

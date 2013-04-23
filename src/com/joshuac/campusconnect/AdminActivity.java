@@ -6,26 +6,29 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class AdminActivity extends Activity {
 
-	Button addButton;
-	Button upcomingButton;
-	Button currentButton;
-	Button attendButton;
+	ImageView addButton;
+	ImageView upcomingButton;
+	ImageView currentButton;
+	ImageView attendButton;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_admin);
-		addButton = (Button) findViewById(R.id.addButton);
-		upcomingButton = (Button) findViewById(R.id.upcomingButton);
-		currentButton = (Button) findViewById(R.id.currentButton);
-		attendButton = (Button) findViewById(R.id.attendButton);
-		addButton.setOnClickListener(buttonHandler);
-		upcomingButton.setOnClickListener(buttonHandler);
-		currentButton.setOnClickListener(buttonHandler);
-		attendButton.setOnClickListener(buttonHandler);
-	}
+		
+		//find buttons for future use
+		addButton = (ImageView) findViewById(R.id.addButton);
+		upcomingButton = (ImageView) findViewById(R.id.upcomingButton);
+		currentButton = (ImageView) findViewById(R.id.currentButton);
+		attendButton = (ImageView) findViewById(R.id.attendButton);
+		
+	}//end onCreate
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -33,30 +36,44 @@ public class AdminActivity extends Activity {
 		return true;
 	}
 	
-	View.OnClickListener buttonHandler = new View.OnClickListener() {
-		  public void onClick(View v) {
-		      if( addButton.getId() == ((Button)v).getId() ){
-		    	  Intent intent = new Intent(getBaseContext(), AddEventActivity.class);
-		          startActivity(intent);
-		      }
-		      else if( upcomingButton.getId() == ((Button)v).getId() ){
-		    	  //set admin to false to prevent touch events
-		    	  Intent intent = new Intent(getBaseContext(), MapActivity.class);
-		    	  intent.putExtra("admin", false);
-		    	  startActivity(intent);
-		      }
-		      else if( currentButton.getId() == ((Button)v).getId() ){
-		          // it was the second button
-		    	  Intent intent = new Intent(getBaseContext(), EventsInAreaActivity.class);
-		    	  startActivity(intent);
-		      }
-		      else if( attendButton.getId() == ((Button)v).getId() ){
-		          // it was the second button
-		    	  Intent intent = new Intent(getBaseContext(), AdminPtsActivity.class);
-		    	  startActivity(intent);
-		      }
-		  }
-	};
-
+	
+	/*
+	 * 
+	 * ImageView Click Events
+	 * 
+	 */
+	
+	//called when "upcoming" button is pressed
+	public void viewUpcomingEvents(View v)
+	{
+		Intent intent = new Intent(getBaseContext(), MapActivity.class);
+		intent.putExtra("admin", false);
+		startActivity(intent);
+	}//end viewUpcomingEvents
+	
+	
+	//called when "add event" button is pressed
+	public void addEvent(View v)
+	{
+		Intent intent = new Intent(getBaseContext(), AddEventActivity.class);
+  	  	startActivity(intent);
+	}//end addEvent
+	
+	
+	//called when "current" button is pressed
+	public void viewCurrentEvents(View v)
+	{
+  	  Intent intent = new Intent(getBaseContext(), EventsInAreaActivity.class);
+  	  startActivity(intent);
+	}//end viewCurrentEvents
+	
+	
+	//called when "students" button is pressed
+	public void viewPoints(View v)
+	{
+  	  Intent intent = new Intent(getBaseContext(), AdminPtsActivity.class);
+  	  startActivity(intent);
+	}//end viewPoints
+	
 
 }

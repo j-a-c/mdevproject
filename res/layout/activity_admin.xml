@@ -4,42 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminActivity" >
-    
-    <Button
-        android:id="@+id/upcomingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
-        android:text="View Upcoming Events"
-        android:textAlignment="center" />
-    
-     <Button
-        android:id="@+id/currentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/upcomingButton"
-        android:layout_below="@+id/upcomingButton"
-        android:layout_marginTop="36dp"
-        android:text="Current Events in Area" />
 
-     <Button
+     <ImageView
+         android:id="@+id/upcomingButton"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true"
+         android:onClick="viewUpcomingEvents"
+         android:src="@drawable/upcoming" />
+
+     <ImageView
+         android:id="@+id/currentButton"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBottom="@+id/upcomingButton"
+         android:layout_alignParentRight="true"
+         android:onClick="viewCurrentEvents"
+         android:src="@drawable/current" />
+
+     <ImageView
          android:id="@+id/addButton"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_centerHorizontal="true"
-         android:layout_below="@+id/attendButton"
-        android:layout_marginTop="36dp"
-         android:text="Add Event" />
-     
-     <Button
+         android:layout_alignParentBottom="true"
+         android:layout_marginBottom="25dp"
+         android:layout_toLeftOf="@+id/currentButton"
+         android:onClick="addEvent"
+         android:src="@drawable/addevent" />
+
+     <ImageView
          android:id="@+id/attendButton"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_centerHorizontal="true"
-         android:layout_below="@+id/currentButton"
-        android:layout_marginTop="36dp"
-         android:text="View Student Points" />
+         android:layout_alignBottom="@+id/addButton"
+         android:layout_alignParentRight="true"
+         android:layout_marginRight="20dp"
+         android:onClick="viewPoints"
+         android:src="@drawable/students" />
 
 </RelativeLayout>
