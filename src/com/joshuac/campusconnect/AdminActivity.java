@@ -52,7 +52,7 @@ public class AdminActivity extends Activity {
 		      }
 		      else if( attendButton.getId() == ((Button)v).getId() ){
 		          // it was the second button
-		    	  Intent intent = new Intent(getBaseContext(), EventsInAreaActivity.class);
+		    	  Intent intent = new Intent(getBaseContext(), AdminPtsActivity.class);
 		    	  startActivity(intent);
 		      }
 		  }

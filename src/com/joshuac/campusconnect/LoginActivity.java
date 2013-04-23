@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends Activity
 {
@@ -36,23 +37,55 @@ public class LoginActivity extends Activity
 		EditText passwordText = (EditText) findViewById(R.id.passwordText);
 		
 		String username = usernameText.getText().toString();
+		String password = passwordText.getText().toString();
 		
-		Intent intent;
-		//set up intent - just used for testing
-		if(username.equals("admin"))
-		{
-			intent = new Intent(getBaseContext(), AdminActivity.class);
-		}
-		else if(username.equals("student"))
-		{
-			intent = new Intent(getBaseContext(), StudentActivity.class);
-		}
-		else
-			intent = new Intent(getBaseContext(), AdminActivity.class);
+		login = new Login(username,password);
 		
-		//put data into intent
-		intent.putExtra("username", username);
-		startActivity(intent);
+//		Intent intent;
+//		//set up intent - just used for testing
+//		if(username.equals("admin"))
+//		{
+//			intent = new Intent(getBaseContext(), AdminActivity.class);
+//		}
+//		else if(username.equals("student"))
+//		{
+//			intent = new Intent(getBaseContext(), StudentActivity.class);
+//		}
+//		else
+//			intent = new Intent(getBaseContext(), AdminActivity.class);
+//		
+//		//put data into intent
+//		intent.putExtra("username", username);
+//		startActivity(intent);
+		
+		 	Thread client = new Thread(new ClientThread(this));
+		    client.start();
+		    try{
+		    	client.join();
+		    	checkAdmin();
+	        }
+		    catch (Exception e) {
+	    		Toast.makeText(getApplicationContext(), "Sorry, Could not connect to Server", Toast.LENGTH_LONG).show();
+		    	//finish();
+	        	
+	    	}
+		
 	}//end login
+	
+	void checkAdmin(){
+		Intent intent;
+		if(logResult == 1){
+			intent = new Intent(getBaseContext(), AdminActivity.class);
+			startActivity(intent);
+		}
+		else if(logResult == 0){
+			intent = new Intent(getBaseContext(), StudentActivity.class);
+			startActivity(intent);
+		}
+		else{
+    		Toast.makeText(getApplicationContext(), "Username/Password invalid", Toast.LENGTH_LONG).show();
+
+		}
+	}
 
 }//end LoginActivity

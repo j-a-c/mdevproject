@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.common.GooglePlayServicesUtil;
+
 public class AddEventActivity extends Activity {
 	Button dateButton;
 	Button timeButton;
@@ -97,6 +99,7 @@ public class AddEventActivity extends Activity {
 		hour = 12;
 		minute = 0;
 		am_pm = "PM";
+		am_pm2 = "PM";
 		
 		curDateText = (TextView) findViewById(R.id.curdateText);
 		weekDayText = (TextView) findViewById(R.id.weekDayText);
@@ -109,6 +112,7 @@ public class AddEventActivity extends Activity {
 			latitude =  b.getDouble("lat");
 			longitude = b.getDouble("lng");
 		}
+
 	}
 
 	@Override
@@ -242,6 +246,7 @@ public class AddEventActivity extends Activity {
 		        	
 		        	switch (id) {
 		        	  case 1:
+		        		 System.out.println("1");
 		        		 int tempHour = hour;
 		        		 if(am_pm.equals("PM") && hour != 12){
 		        			 tempHour = hour + 12;
@@ -256,7 +261,7 @@ public class AddEventActivity extends Activity {
 		        	  case 2:
 		        		  DatePickerDialog date = new DatePickerDialog(AddEventActivity.this, datePickerListener, year, month,day);
 		        		  date.show();
-		        		  
+		        		  break;
 		        	  case 3:
 		        		  int tempHour2 = hour;
 			        		 if(am_pm2.equals("PM") && hour != 12){

@@ -8,6 +8,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AdminPtsActivity" >
 
-    
+     <TextView
+         android:id="@+id/attendLabel"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentTop="true"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="10dp"
+         android:text="Students Points"
+         android:textColor="@android:color/black"
+         android:textSize="35sp" />
+
+     <ListView
+         android:id="@+id/attendView"
+         android:layout_width="match_parent"
+         android:layout_height="300dp"
+         android:layout_below="@+id/attendLabel"
+         android:layout_centerHorizontal="true"
+         android:background="@drawable/border"
+         android:gravity="center"
+         android:orientation="vertical" >
+	</ListView>
+
+     <Button
+         android:id="@+id/backButton"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/attendView"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="14dp"
+         android:text="Back"
+         android:textSize="20dp" />
 
 </RelativeLayout>

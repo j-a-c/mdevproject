@@ -91,7 +91,8 @@
 
             android:name="com.joshuac.campusconnect.AdminPtsActivity"
             android:label="@string/title_activity_admin_pts" >
-
+		</activity>
+		<activity
             android:name="com.joshuac.campusconnect.SettingsActivity"
             android:label="@string/title_activity_settings">
         </activity>

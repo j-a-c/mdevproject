@@ -14,9 +14,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class UpcomingActivity extends Activity
 {
+
 	
 	//is user viewing map an admin?
 	private boolean isAdmin = false;
@@ -53,6 +55,7 @@ public class UpcomingActivity extends Activity
 		
 		//create thread to receive new events
 		createClientThread();
+
 		
 	}//end onCreate
 	
@@ -60,16 +63,18 @@ public class UpcomingActivity extends Activity
 	protected void onPause()
 	{
 		super.onPause();
-		try{
-		    	client.join();
-        } 
-	    catch (Exception e) { 
-    	}
+		
 	}
 	
 	public void createClientThread(){
 		client = new Thread(new ClientThread(this));
-	    client.start();
+		try{
+	    	client.join();
+		} 
+		catch (Exception e) { 
+			Toast.makeText(getApplicationContext(), "Sorry, Could not Connect to Server", Toast.LENGTH_LONG).show();
+
+		}
 	}
 	
 	//ClientThread.newEventReceiver interface

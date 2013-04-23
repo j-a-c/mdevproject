@@ -54,7 +54,7 @@ public class MapActivity extends FragmentActivity implements LocationListener
 		super.onCreate(savedInstanceState);
 		//set view
 		setContentView(R.layout.activity_map);
-		
+		System.out.println("MAP 1");
 		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 		
 		//get bundle and set admin status
